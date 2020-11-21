@@ -1,0 +1,12 @@
+name: manhuntMCTwo
+version: 1.0
+author: Atin
+main: me.atin.manhtwo.Fourth
+commands:
+  targets:
+   aliases: [focusons]
+   description: To start 2 Speedrunner Manhunt
+  stoptargets:
+   description: To stop the 2 Speedrunner Manhunt
+  helptargets:
+   description: To explain the 2 Speedrunner Manhunt plugin 
