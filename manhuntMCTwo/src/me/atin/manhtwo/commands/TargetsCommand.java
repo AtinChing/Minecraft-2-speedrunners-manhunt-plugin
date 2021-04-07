@@ -36,18 +36,19 @@ public class TargetsCommand implements CommandExecutor{
 				return true;
 			}
 			else if(args.length == 1 && p.hasPermission("targets.use")){ // If only one argument is passed in, then the player who called the command and the player who was passed in as an argument become the speedrunners
-				Player victim1 = p; // One of the
-				Player victim2 = Bukkit.getPlayer(args[0]);
+				Player victim1 = p; // One of the speedrunners gets set to the player that called the command itself
+				Player victim2 = Bukkit.getPlayer(args[0]); // Other speedrunner is set to the one who was mentioned in the command call.
 				plugin.setVictims(victim1, victim2);
 				plugin.manhuntIsOn = true;
 				for(Player player : p.getWorld().getPlayers()){
 					if(player != victim1 && player != victim2 && !player.getInventory().contains(Material.COMPASS)){
-						p.getInventory().addItem(new ItemStack(Material.COMPASS, 1));
+						player.getInventory().addItem(new ItemStack(Material.COMPASS, 1));
 					}
 					else if((player == victim1 || player == victim2) && player.getInventory().contains(Material.COMPASS)){
-						p.getInventory().remove(Material.COMPASS);
+						player.getInventory().remove(Material.COMPASS);
 					}
 				}
+				Bukkit.broadcastMessage(ChatColor.GREEN + "2 speedrunner Manhunt has successfully been turned on! The speedrunners are " + victim1.getName() + " and " + victim2.getName() + "!");
 				return true;
 			}
 			else if(args.length  == 2 && p.hasPermission("targets.use")) { // If there are 2 arguments and the player has permission.
@@ -59,11 +60,11 @@ public class TargetsCommand implements CommandExecutor{
 					if(!(player == victim1 || player == victim2) && !player.getInventory().contains(Material.COMPASS)) {
 						player.getInventory().addItem(compass);
 					}
-					else if ((this.player == victim1 || this.player == victim2) && player.getInventory().contains(Material.COMPASS)) {
+					else if ((player == victim1 || player == victim2) && player.getInventory().contains(Material.COMPASS)) {
 						player.getInventory().remove(Material.COMPASS);
 					}
 				}
-				Bukkit.broadcastMessage(ChatColor.GREEN + "2 speedrunner Manhunt has successfully been turned on! The speedrunners are" + victim1.getName() + " and " + victim2.getName() + "!");
+				Bukkit.broadcastMessage(ChatColor.GREEN + "2 speedrunner Manhunt has successfully been turned on! The speedrunners are " + victim1.getName() + " and " + victim2.getName() + "!");
 				return true;
 			}
 		}

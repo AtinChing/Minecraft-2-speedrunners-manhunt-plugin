@@ -17,6 +17,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -65,7 +66,13 @@ public class Fourth extends JavaPlugin implements Listener {
 		    }
 		}
 	}
-	
+	@EventHandler
+	public void onPlayerJoin(PlayerJoinEvent event){
+		Player player = event.getPlayer();
+		if(player.isOp()){
+			player.sendMessage(ChatColor.YELLOW + "Please make sure you have server OP, otherwise you won't be able to use the /targets and /stoptargets commands to play 2 Speedrunner Manhunt");
+		}
+	}
 	@EventHandler
 	public void onEntityPickupItemEvent(EntityPickupItemEvent event) {
 		if(manhuntIsOn) {

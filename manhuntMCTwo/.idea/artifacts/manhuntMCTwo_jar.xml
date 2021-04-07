@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="manhuntMCTwo:jar">
+    <output-path>$USER_HOME$/Desktop/Minecraft Plugins</output-path>
+    <root id="archive" name="manhuntMCTwo.jar">
+      <element id="module-output" name="manhuntMCTwo" />
+    </root>
+  </artifact>
+</component>
